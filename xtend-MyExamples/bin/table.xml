@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables>
+	<table id="user" tablen="90">
+		<field name="id" len="6" datatype="int(5)" defaultValue="1"/>
+		<field name="name" len="32" datatype="varchar(32)" defaultValue="hero"/>
+		<field name="password" len="32" datatype="varchar(32)" defaultValue="233333"/>
+	</table>
+	<table id="address" tablen="350">
+		<field name="id" len="10" datatype="int(9)" defaultValue="2"/>
+		<field name="home" len="8" datatype="varchar(8)" defaultValue="Mars"/>
+	</table>
+</tables>
+

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtend-MyExamples
+Bundle-SymbolicName: xtend-MyExamples
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: xtend-MyExamples
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.20.0",
+ org.eclipse.xtext.xbase;bundle-version="2.20.0",
+ org.junit;bundle-version="4.12.0"
