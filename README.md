@@ -1,5 +1,5 @@
 # 代码生成实例项目
-![image](https://github.com/lesleytong/xtend/blob/master/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png)
+![image](https://github.com/lesleytong/xtend/blob/master/%E8%AF%B4%E6%98%8E.png)
 ## 项目结构
 
 ## 运行原理
