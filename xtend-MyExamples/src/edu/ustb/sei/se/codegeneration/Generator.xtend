@@ -14,7 +14,6 @@ class Generator {
 	 */
 	def generate(List<Entity> entities) {
 		println(generateClass(entities))
-		println(generateSql(entities))
 	}
 		
 	/*
@@ -27,28 +26,25 @@ class Generator {
 			public class «e.name.toFirstUpper» {
 				«FOR field : e.features»
 					private «field.type.generateType» «field.name.toLowerCase»;
-				«ENDFOR»			
+				«ENDFOR»
+				
+				static public void createTable() {
+					String sql = "«e.generateSql»";
+					executeSQL(sql);
+				}
 			}
 		«ENDFOR»
 	'''
 	
 	def static generateType(String type){ 
 		switch type {
-			case 'int': 'int' // 双引号或单引号都表示字符串
+			case type.startsWith('int'): 'int' // 双引号或单引号都表示字符串
 			case type.startsWith('varchar'): 'String'
 			// 你可以增加自己的类型
 			default: 'Object'
 		}
 	}
 			
-	def generateSql(List<Entity> entities)'''
-		«FOR e : entities»
-		CREATE TABLE «e.name»
-		(
-		«FOR field : e.features SEPARATOR ',' »
-			«field.name» «field.type»
-		«ENDFOR»
-		);
-		«ENDFOR»
-	'''	
+	def generateSql(Entity e)
+		'''CREATE TABLE «e.name»(«FOR field : e.features SEPARATOR ',' »«field.name» «field.type»«ENDFOR»)'''	
 }
