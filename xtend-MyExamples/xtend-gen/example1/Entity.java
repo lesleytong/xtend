@@ -1,5 +1,6 @@
 package example1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.Pure;
@@ -10,9 +11,9 @@ import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 public class Entity {
   private final String _name;
   
-  private final HashMap<String, String> _features;
+  private final HashMap<String, ArrayList<String>> _features;
   
-  public Entity(final String name, final HashMap<String, String> features) {
+  public Entity(final String name, final HashMap<String, ArrayList<String>> features) {
     super();
     this._name = name;
     this._features = features;
@@ -63,7 +64,7 @@ public class Entity {
   }
   
   @Pure
-  public HashMap<String, String> getFeatures() {
+  public HashMap<String, ArrayList<String>> getFeatures() {
     return this._features;
   }
 }

@@ -11,12 +11,15 @@ class Generator {
 	 * 扩展2：类模板增加get、set方法
 	 */
 	def static generateClass(ArrayList<? extends Entity> entities)'''
-		«FOR e : entities BEFORE 'package example1;\n\npublic '»
-			class «e.name.toFirstUpper» {
+		«FOR e : entities»		
+			public class «e.name.toFirstUpper» {
 				«FOR f : e.features.entrySet»
-					private «f.value.generateType» «f.key»;
+«««				注释：f.value.get(0)是type、f.value.get(1)是defaultValue
+					«var type = f.value.get(0).generateType»
+					private «type» «f.key»;
 				«ENDFOR»			
 			}
+
 		«ENDFOR»
 	'''
 	
@@ -26,18 +29,19 @@ class Generator {
 			case type.contains('varchar'): 'String'
 		}
 	}
-	
-
+			
 	def static generateSql(ArrayList<? extends Entity> entities)'''
 		«FOR e : entities»
 		CREATE TABLE «e.name»
 		(
 		«FOR f : e.features.entrySet SEPARATOR ',' »
-			«f.key» «f.value»
+			«f.key» «f.value.get(0)»
 		«ENDFOR»
 		);
+		
 		«ENDFOR»
-	'''
+	'''	
+	
 	
 	/*
 	 * 扩展3：向表中插入记录的SQL语句的方法
@@ -46,9 +50,7 @@ class Generator {
 	
 	
 }
-
-
 @Data class Entity {
 	String name
-	HashMap<String, String> features
+	HashMap<String, ArrayList<String>> features
 }

@@ -17,24 +17,21 @@ public class Generator {
   public static CharSequence generateClass(final ArrayList<? extends Entity> entities) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _hasElements = false;
       for(final Entity e : entities) {
-        if (!_hasElements) {
-          _hasElements = true;
-          _builder.append("package example1;\n\npublic ");
-        }
-        _builder.append("class ");
+        _builder.append("public class ");
         String _firstUpper = StringExtensions.toFirstUpper(e.getName());
         _builder.append(_firstUpper);
         _builder.append(" {");
         _builder.newLineIfNotEmpty();
         {
-          Set<Map.Entry<String, String>> _entrySet = e.getFeatures().entrySet();
-          for(final Map.Entry<String, String> f : _entrySet) {
+          Set<Map.Entry<String, ArrayList<String>>> _entrySet = e.getFeatures().entrySet();
+          for(final Map.Entry<String, ArrayList<String>> f : _entrySet) {
+            _builder.append("\t");
+            String type = Generator.generateType(f.getValue().get(0));
+            _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("private ");
-            String _generateType = Generator.generateType(f.getValue());
-            _builder.append(_generateType, "\t");
+            _builder.append(type, "\t");
             _builder.append(" ");
             String _key = f.getKey();
             _builder.append(_key, "\t");
@@ -43,6 +40,7 @@ public class Generator {
           }
         }
         _builder.append("}");
+        _builder.newLine();
         _builder.newLine();
       }
     }
@@ -78,9 +76,9 @@ public class Generator {
         _builder.append("(");
         _builder.newLine();
         {
-          Set<Map.Entry<String, String>> _entrySet = e.getFeatures().entrySet();
+          Set<Map.Entry<String, ArrayList<String>>> _entrySet = e.getFeatures().entrySet();
           boolean _hasElements = false;
-          for(final Map.Entry<String, String> f : _entrySet) {
+          for(final Map.Entry<String, ArrayList<String>> f : _entrySet) {
             if (!_hasElements) {
               _hasElements = true;
             } else {
@@ -89,12 +87,13 @@ public class Generator {
             String _key = f.getKey();
             _builder.append(_key);
             _builder.append(" ");
-            String _value = f.getValue();
-            _builder.append(_value);
+            String _get = f.getValue().get(0);
+            _builder.append(_get);
             _builder.newLineIfNotEmpty();
           }
         }
         _builder.append(");");
+        _builder.newLine();
         _builder.newLine();
       }
     }

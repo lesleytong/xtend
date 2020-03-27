@@ -25,13 +25,17 @@ public class ParseXmlTool {
           Element tableNode = ((Element) t);
           String tableId = tableNode.attributeValue("id");
           List fieldNodes = tableNode.elements("field");
-          HashMap<String, String> map = new HashMap<String, String>();
+          HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
           for (final Object f : fieldNodes) {
             {
               Element fieldNode = ((Element) f);
               String name = fieldNode.attributeValue("name");
               String datatype = fieldNode.attributeValue("datatype");
-              map.put(name, datatype);
+              String defaultValue = fieldNode.attributeValue("defaultValue");
+              ArrayList<String> list = new ArrayList<String>();
+              list.add(datatype);
+              list.add(defaultValue);
+              map.put(name, list);
             }
           }
           Entity entity = new Entity(tableId, map);

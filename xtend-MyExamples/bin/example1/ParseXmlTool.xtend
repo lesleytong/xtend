@@ -33,13 +33,17 @@ class ParseXmlTool {
 			// 获得table节点下所有名为"field"的子结点
 			var fieldNodes = tableNode.elements("field")
 						
-			// 遍历所有field节点，获取每个field节点的name属性值和datatype属性值
-			var map = new HashMap<String, String>	// 准备保存features的map
+			// 遍历所有field节点，获取每个field节点的name属性值、datatype属性值和defaultValue属性值
+			var map = new HashMap<String, ArrayList<String>>
 			for(f : fieldNodes){
 				var fieldNode = f as Element 
 				var name = fieldNode.attributeValue("name")
 				var datatype = fieldNode.attributeValue("datatype")
-				map.put(name, datatype)
+				var defaultValue = fieldNode.attributeValue("defaultValue")
+				var list = new ArrayList<String>
+				list.add(datatype)
+				list.add(defaultValue)
+				map.put(name, list)
 			}
 			
 			var entity = new Entity(tableId, map)
