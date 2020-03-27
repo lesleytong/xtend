@@ -1,5 +1,5 @@
 # 代码生成实例项目
-
+![image](https://github.com/lesleytong/xtend/blob/master/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png)
 ## 项目结构
 
 ## 运行原理
@@ -7,7 +7,7 @@
 
 ## 作业要求
 1. 阅读并理解代码
-2. 扩展Generator.xtend，为每个生成的类自动生成默认的构造函数，利用Table.xml中对每个field中defaultValue的信息设置属性的默认值。
+2. 扩展Generator.xtend，为每个生成的类自动生成默认的构造函数，利用table.xml中对每个field中defaultValue的信息设置属性的默认值。
 3. 扩展Generator.xtend，使得在生成属性的同时还会为这个属性产生对应的get、set方法
 4. 扩展Generator.xtend，为每个生成的类自动生成一个向数据库插入记录的代码，并假设存在一个可以调用的executeSQL(String sql)函数，你需要做的是产生SQL语句。
 
