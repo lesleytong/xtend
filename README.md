@@ -1,7 +1,7 @@
 # 代码生成实例项目
-![image](https://github.com/lesleytong/xtend/blob/master/%E8%AF%B4%E6%98%8E.png)
-## 项目结构
 
+## 项目结构
+![image](https://github.com/lesleytong/xtend/blob/master/%E8%AF%B4%E6%98%8E.png)
 ## 运行原理
 在运行TestGenerator后，程序首先会读取src/Table.xml，将其中而信息读入后，调用Generator中的generate方法，该方法会根据XML文件中的信息产生代码，并将其打印在控制台中。
 
