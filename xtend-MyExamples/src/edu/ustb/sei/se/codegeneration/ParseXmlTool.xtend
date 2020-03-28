@@ -1,8 +1,5 @@
 package edu.ustb.sei.se.codegeneration
-/**
- * dom4j解析xml文件
- * 记得导入dom4j-1.6.1.jar
- */
+
 import java.util.ArrayList
 import org.dom4j.io.SAXReader
 import java.io.File
